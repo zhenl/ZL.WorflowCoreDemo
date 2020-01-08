@@ -24,6 +24,12 @@ namespace ZL.WorflowCoreDemo.InputDataToStep
             string value = Console.ReadLine();
             host.PublishEvent("MyEvent", workflowId, value);
 
+            
+            Console.ReadLine();
+            foreach (var key in initialData.Keys)
+            {
+                Console.WriteLine(key + ":" + initialData[key]);
+            }
             Console.ReadLine();
             host.Stop();
         }
