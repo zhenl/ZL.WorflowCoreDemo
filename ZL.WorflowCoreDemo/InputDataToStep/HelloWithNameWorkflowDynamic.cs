@@ -20,7 +20,8 @@ namespace ZL.WorflowCoreDemo.InputDataToStep
                 .Then<HelloWithName>()
                     .Input(step => step.Name, data => data["Name"])
                 .Then<GoodbyeWithName>()
-                    .Input(step => step.Name, data => data["Name"]);
+                    .Input(step => step.Name, data => data["Name"])
+                    .Then((context)=> { Console.WriteLine("结束"); });
         }
     }
 }
