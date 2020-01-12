@@ -28,7 +28,22 @@ namespace ZL.WorflowCoreDemo.InputDataToStep
             }
             else
             {
-                host.ResumeWorkflow(workflowId);
+                try
+                {
+                    var success = host.ResumeWorkflow(workflowId).Result;
+                    if (!success)
+                    {
+                        Console.WriteLine("失败");
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    Console.WriteLine(ex.Message);
+                    return;
+                }
+                
             }
 
             Console.WriteLine("输入名字");
