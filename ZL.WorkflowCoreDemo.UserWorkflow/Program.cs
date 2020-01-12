@@ -27,10 +27,10 @@ namespace ZL.WorkflowCoreDemo.UserWorkflow
             Thread.Sleep(1000);
             Console.WriteLine();
             Console.WriteLine("Open user actions are");
-            //var openItems = host.GetOpenUserActions(workflowId);
-            var workflow = host.PersistenceStore.GetWorkflowInstance(workflowId).Result;
-            var openItems = workflow.GetOpenUserActions();
-            
+            var openItems = host.GetOpenUserActions(workflowId);
+            //var workflow = host.PersistenceStore.GetWorkflowInstance(workflowId).Result;
+            //var openItems = workflow.GetOpenUserActions();
+
             foreach (var item in openItems)
             {
                 Console.WriteLine(item.Prompt + ", Assigned to " + item.AssignedPrincipal);
