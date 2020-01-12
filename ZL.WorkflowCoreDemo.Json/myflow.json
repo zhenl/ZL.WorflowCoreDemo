@@ -1,0 +1,16 @@
+{
+  "Id": "HelloWorld",
+  "Version": 1,
+  "Steps": [
+    {
+      "Id": "Hello",
+      "StepType": "ZL.WorflowCoreDemo.Basic.Steps.HelloWorld,ZL.WorflowCoreDemo",
+      "NextStepId": "Bye"
+    },
+    {
+      "Id": "Bye",
+      "StepType": "ZL.WorflowCoreDemo.Basic.Steps.GoodbyeWorld,ZL.WorflowCoreDemo"
+      
+    }
+  ]
+}
