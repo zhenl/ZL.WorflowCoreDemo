@@ -7,7 +7,7 @@ namespace ZL.WorflowCoreDemo
         static void Main(string[] args)
         {
             //Basic.FlowRun.Run();
-            InputDataToStep.FlowRunDynamic.Run();
+            InputDataToStep.FlowRunDynamicSqlServer.Run();
 
         }
 
