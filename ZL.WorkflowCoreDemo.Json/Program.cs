@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Collections.Generic;
 using WorkflowCore.Interface;
 using WorkflowCore.Services.DefinitionStorage;
 
@@ -26,11 +27,18 @@ namespace ZL.WorkflowCoreDemo.Json
             var json = System.IO.File.ReadAllText("myflow.json");
             loader.LoadDefinition(json, Deserializers.Json);
             
+            var json1 = System.IO.File.ReadAllText("myflowdynamic.json");
+ var xx = Deserializers.Json(json1);
+            Console.WriteLine(new Dictionary<string, object>() is IDictionary<string, object>);
+            loader.LoadDefinition(json1, Deserializers.Json);
+
+           
+
             var host = serviceProvider.GetService<IWorkflowHost>();
             //host.RegisterWorkflow<HelloWorldWorkflow>();
             host.Start();
             host.StartWorkflow("HelloWorld", 1, null);
-            
+            host.StartWorkflow("ManualWorkflow", 1, null);
             Console.ReadLine();
             host.Stop();
         }

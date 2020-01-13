@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="myflowdynamic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="myflow.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
