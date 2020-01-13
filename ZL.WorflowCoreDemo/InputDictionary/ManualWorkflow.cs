@@ -27,6 +27,7 @@ namespace ZL.WorflowCoreDemo.InputDictionary
                     }).Then<ManualInput>()
                        .Input((step,data)=>
                        {
+                           step.Name = data.Name;
                            step.Paras = data.MyDic;
                            //Console.WriteLine(data.Count);
                        });

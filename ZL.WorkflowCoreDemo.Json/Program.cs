@@ -43,7 +43,15 @@ namespace ZL.WorkflowCoreDemo.Json
             //host.StartWorkflow("HelloWorld", 1, null);
             var data = new ManualWorkflowData();
             data.MyDic.Add("Name", "zzd");
-            host.StartWorkflow("ManualWorkflow", data, null);
+            //var str = Newtonsoft.Json.JsonConvert.SerializeObject(data);
+
+            //var data1= Newtonsoft.Json.JsonConvert.DeserializeObject<ManualWorkflowData>(str);
+            //Console.WriteLine(data1.MyDic["Name"]);
+
+            //Console.WriteLine(str);
+            data.Name = "gxy";
+            var res=host.StartWorkflow("ManualWorkflow", data, null).Result;
+            Console.WriteLine(res);
             Console.ReadLine();
             host.Stop();
         }

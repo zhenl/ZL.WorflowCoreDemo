@@ -8,16 +8,15 @@
       "StepType": "ZL.WorflowCoreDemo.InputDictionary.ManualInput,ZL.WorflowCoreDemo",
       "NextStepId": "EnterName2",
       "inputs": {
-        "Paras": {
-          "Name": "data.MyDic[\"Name\"]"
+        "stepPara": {
+          "ParaValue": 1
         }
-
       }
     },
     {
       "Id": "EnterName2",
       "StepType": "ZL.WorflowCoreDemo.InputDictionary.ManualInput,ZL.WorflowCoreDemo"
-
+      
     }
   ]
 }

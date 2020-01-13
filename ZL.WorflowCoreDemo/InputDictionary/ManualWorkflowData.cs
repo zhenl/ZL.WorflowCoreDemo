@@ -8,6 +8,8 @@ namespace ZL.WorflowCoreDemo.InputDictionary
     {
         public Dictionary<string, object> MyDic;
 
+        public string Name { get; set; }
+
         public ManualWorkflowData()
         {
             MyDic = new Dictionary<string, object>();
