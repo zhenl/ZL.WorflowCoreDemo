@@ -14,10 +14,10 @@ namespace ZL.WorflowCoreDemo.InputDictionary
             IServiceProvider serviceProvider = ConfigureServices();
             var host = serviceProvider.GetService<IWorkflowHost>();
 
-            host.RegisterWorkflow<ManualWorkflow, Dictionary<string,object>>();
+            host.RegisterWorkflow<ManualWorkflow, ManualWorkflowData>();
             host.Start();
 
-            var initialData = new Dictionary<string, object>();
+            var initialData = new ManualWorkflowData();
             var workflowId = host.StartWorkflow("ManualWorkflow", 1, initialData).Result;
 
             Console.WriteLine("输入名字");

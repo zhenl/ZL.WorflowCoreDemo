@@ -6,12 +6,12 @@ using WorkflowCore.Models;
 
 namespace ZL.WorflowCoreDemo.InputDictionary
 {
-    public class ManualWorkflow : IWorkflow<Dictionary<string,object>>
+    public class ManualWorkflow : IWorkflow<ManualWorkflowData>
     {
         public string Id => "ManualWorkflow";
         public int Version => 1;
         
-        public void Build(IWorkflowBuilder<Dictionary<string, object>> builder)
+        public void Build(IWorkflowBuilder<ManualWorkflowData> builder)
         {
             builder
                 .StartWith(context => ExecutionResult.Next())
@@ -21,14 +21,14 @@ namespace ZL.WorflowCoreDemo.InputDictionary
                         var dic = step.EventData as Dictionary<string, object>;
                         foreach (var key in dic.Keys)
                         {
-                            if (data.ContainsKey(key)) data[key] = dic[key];
-                            else data.Add(key, dic[key]);
+                            if (data.MyDic.ContainsKey(key)) data.MyDic[key] = dic[key];
+                            else data.MyDic.Add(key, dic[key]);
                         }
                     }).Then<ManualInput>()
                        .Input((step,data)=>
                        {
-                           step.Paras = data;
-                           Console.WriteLine(data.Count);
+                           step.Paras = data.MyDic;
+                           //Console.WriteLine(data.Count);
                        });
                 
         }

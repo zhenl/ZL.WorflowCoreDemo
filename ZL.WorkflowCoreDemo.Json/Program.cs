@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using WorkflowCore.Interface;
 using WorkflowCore.Services.DefinitionStorage;
+using ZL.WorflowCoreDemo.InputDictionary;
 
 namespace ZL.WorkflowCoreDemo.Json
 {
@@ -24,23 +25,32 @@ namespace ZL.WorkflowCoreDemo.Json
             //    "{      \"Id\": \"Bye\"," +
             //    "      \"StepType\": \"ZL.WorflowCoreDemo.Basic.Steps.GoodbyeWorld,ZL.WorflowCoreDemo\"" +
             //    "    }  ]}";
-            var json = System.IO.File.ReadAllText("myflow.json");
-            loader.LoadDefinition(json, Deserializers.Json);
+            //var json = System.IO.File.ReadAllText("myflowwithname.json");
+            //loader.LoadDefinition(json, Deserializers.Json);
             
             var json1 = System.IO.File.ReadAllText("myflowdynamic.json");
- var xx = Deserializers.Json(json1);
-            Console.WriteLine(new Dictionary<string, object>() is IDictionary<string, object>);
-            loader.LoadDefinition(json1, Deserializers.Json);
+ 
+            var xx = Deserializers.Json(json1);
 
-           
+            //Console.WriteLine(new Dictionary<string, object>() is IDictionary<string, object>);
+            loader.LoadDefinition(json1, Deserializers.Json);
+                    
 
             var host = serviceProvider.GetService<IWorkflowHost>();
+            host.OnStepError += Host_OnStepError;
             //host.RegisterWorkflow<HelloWorldWorkflow>();
             host.Start();
-            host.StartWorkflow("HelloWorld", 1, null);
-            host.StartWorkflow("ManualWorkflow", 1, null);
+            //host.StartWorkflow("HelloWorld", 1, null);
+            var data = new ManualWorkflowData();
+            data.MyDic.Add("Name", "zzd");
+            host.StartWorkflow("ManualWorkflow", data, null);
             Console.ReadLine();
             host.Stop();
+        }
+
+        private static void Host_OnStepError(WorkflowCore.Models.WorkflowInstance workflow, WorkflowCore.Models.WorkflowStep step, Exception exception)
+        {
+            
         }
 
         private static IServiceProvider ConfigureServices()
