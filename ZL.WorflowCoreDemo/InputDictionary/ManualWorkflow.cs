@@ -17,7 +17,6 @@ namespace ZL.WorflowCoreDemo.InputDictionary
                 .StartWith(context => ExecutionResult.Next())
                 .WaitFor("MyEvent", (data, context) => context.Workflow.Id, data => DateTime.Now)
                     .Output((step, data)=> {
-                        //data = step.EventData as Dictionary<string, string>;
                         var dic = step.EventData as Dictionary<string, object>;
                         foreach (var key in dic.Keys)
                         {

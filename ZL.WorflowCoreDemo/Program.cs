@@ -7,8 +7,8 @@ namespace ZL.WorflowCoreDemo
         static void Main(string[] args)
         {
             //Basic.FlowRun.Run();
-            InputDictionary.FlowRun.Run();
-
+            //InputDictionary.FlowRun.Run();
+            ActivityWorker.FlowRun.Run();
         }
 
     }

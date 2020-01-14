@@ -46,6 +46,9 @@ namespace ZL.WorflowCoreDemo.InputDataToStep
                 
             }
 
+           
+                       
+
             Console.WriteLine("输入名字");
             string value = Console.ReadLine();
             host.PublishEvent("MyEvent", workflowId, value);

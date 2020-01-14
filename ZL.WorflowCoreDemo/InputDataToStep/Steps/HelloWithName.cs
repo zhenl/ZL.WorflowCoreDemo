@@ -11,6 +11,7 @@ namespace ZL.WorflowCoreDemo.InputDataToStep.Steps
         public string Name { get; set; }
         public override ExecutionResult Run(IStepExecutionContext context)
         {
+            
             Console.WriteLine("你好," + Name);
             return ExecutionResult.Next();
         }

@@ -25,9 +25,9 @@ namespace ZL.WorkflowCoreDemo.Json
             //    "{      \"Id\": \"Bye\"," +
             //    "      \"StepType\": \"ZL.WorflowCoreDemo.Basic.Steps.GoodbyeWorld,ZL.WorflowCoreDemo\"" +
             //    "    }  ]}";
-            //var json = System.IO.File.ReadAllText("myflowwithname.json");
-            //loader.LoadDefinition(json, Deserializers.Json);
-            
+            var json = System.IO.File.ReadAllText("myflow.json");
+            loader.LoadDefinition(json, Deserializers.Json);
+
             var json1 = System.IO.File.ReadAllText("myflowdynamic.json");
  
             var xx = Deserializers.Json(json1);
@@ -40,7 +40,9 @@ namespace ZL.WorkflowCoreDemo.Json
             host.OnStepError += Host_OnStepError;
             //host.RegisterWorkflow<HelloWorldWorkflow>();
             host.Start();
-            //host.StartWorkflow("HelloWorld", 1, null);
+            var workflowId=host.StartWorkflow("HelloWorld", 1, null).Result;
+            var ins = host.PersistenceStore.GetWorkflowInstance(workflowId).Result;
+            
             var data = new ManualWorkflowData();
             data.MyDic.Add("Name", "zzd");
             //var str = Newtonsoft.Json.JsonConvert.SerializeObject(data);
