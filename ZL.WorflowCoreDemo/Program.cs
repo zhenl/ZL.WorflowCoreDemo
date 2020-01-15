@@ -12,7 +12,8 @@ namespace ZL.WorflowCoreDemo
 
             //Paralle.FlowRunParallePath.Run();
             //ControlStructures.FlowRunIf.Run();
-            ControlStructures.FlowRunDecision.Run();
+            //ControlStructures.FlowRunDecision.Run();
+            ControlStructures.FlowRunSchedule.Run();
         }
 
     }
