@@ -1,7 +1,9 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 using WorkflowCore.Interface;
+using WorkflowCore.Models;
 using ZL.WorflowCoreDemo.InputDataToStep;
 using ZL.WorflowCoreDemo.InputDataToStep.Steps;
 
@@ -9,7 +11,7 @@ namespace ZL.WorflowCoreDemo.ControlStructures
 {
     public class WhileWorkflow : IWorkflow<MyNameClass>
     {
-        public string Id => "While";
+        public string Id => "WhileWorkflow";
         public int Version => 1;
 
         public void Build(IWorkflowBuilder<MyNameClass> builder)
@@ -17,14 +19,13 @@ namespace ZL.WorflowCoreDemo.ControlStructures
             builder
                 .StartWith<HelloWithName>()
                     .Input(step => step.Name, data => data.MyName)
-                .While(data => data.MyName.Length > 1)
+                .While(data => data.MyName.Length < 3)
                     .Do(x => x
-                        .StartWith<HelloWithName>()
-                            .Input(step => step.Name, data => data.MyName)
-                        .Then((data,context)=> { d})
-                            .Input(step => step.Value1, data => data.Counter)
-                            .Output(data => data.Counter, step => step.Value2))
-                
+                        .StartWith(context=> { Console.WriteLine("输入小于3个字符"); ExecutionResult.Next(); })
+                        .Activity("activity-1", (data) => data.MyName)
+                        .Output(data => data.MyName, step => step.Result))
+                .Then<GoodbyeWithName>()
+                   .Input(step => step.Name, data => data.MyName);
         }
     }
 }
