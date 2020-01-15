@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WorkflowCore.Interface;
+﻿using WorkflowCore.Interface;
 using ZL.WorflowCoreDemo.InputDataToStep;
 using ZL.WorflowCoreDemo.InputDataToStep.Steps;
 
@@ -21,9 +18,12 @@ namespace ZL.WorflowCoreDemo.ActivityWorker
                     .Activity("activity-1", (data) => data.MyName)
                         .Output(data => data.MyName, step => step.Result)
                     .Then<GoodbyeWithName>()
+                        .Input(step => step.Name, data => data.MyName)
+                    .Activity("activity-2", (data) => data.MyName)
+                        .Output(data => data.MyName, step => step.Result)
+                     .Then<HelloWithName>().Input(step => step.Name, data => data.MyName)
+                    .Then<GoodbyeWithName>()
                         .Input(step => step.Name, data => data.MyName);
-            
-
         }
     }
 }

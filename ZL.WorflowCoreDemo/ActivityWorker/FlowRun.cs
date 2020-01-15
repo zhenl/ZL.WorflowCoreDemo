@@ -17,17 +17,25 @@ namespace ZL.WorflowCoreDemo.ActivityWorker
 
             host.Start();
 
-            var myClass = new MyNameClass { MyName = "zzd" };
+            var myClass = new MyNameClass { MyName = "张三" };
 
             host.StartWorkflow("MyActivityWorkflow", 1, myClass);
 
             var activity = host.GetPendingActivity("activity-1", "worker1", TimeSpan.FromMinutes(1)).Result;
+            
+            if (activity != null)
+            {
+                Console.WriteLine("输入名字");
+                string value = Console.ReadLine();
+                host.SubmitActivitySuccess(activity.Token, value);
+            }
+
+            activity = host.GetPendingActivity("activity-2", "worker2", TimeSpan.FromMinutes(1)).Result;
 
             if (activity != null)
             {
                 Console.WriteLine("输入名字");
                 string value = Console.ReadLine();
-                //Console.WriteLine(activity.Parameters);
                 host.SubmitActivitySuccess(activity.Token, value);
             }
 

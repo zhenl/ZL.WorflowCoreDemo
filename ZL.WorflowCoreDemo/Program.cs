@@ -8,7 +8,9 @@ namespace ZL.WorflowCoreDemo
         {
             //Basic.FlowRun.Run();
             //InputDictionary.FlowRun.Run();
-            ActivityWorker.FlowRun.Run();
+            //ActivityWorker.FlowRun.Run();
+
+            Paralle.FlowRunParallePath.Run();
         }
 
     }
