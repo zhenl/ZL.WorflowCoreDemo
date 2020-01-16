@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZL.WorkflowCoreDemo.Json", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZL.WorkflowCoreDemo.Test", "ZL.WorkflowCoreDemo.Test\ZL.WorkflowCoreDemo.Test.csproj", "{5C82E747-7717-4FB3-AC38-2E6E27DDB6FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZL.WorkflowCoreDemo.WebApp", "ZL.WorkflowCoreDemo.WebApp\ZL.WorkflowCoreDemo.WebApp.csproj", "{4C55282D-14E5-499E-BF43-6A741D7B5F26}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{5C82E747-7717-4FB3-AC38-2E6E27DDB6FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C82E747-7717-4FB3-AC38-2E6E27DDB6FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C82E747-7717-4FB3-AC38-2E6E27DDB6FE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C55282D-14E5-499E-BF43-6A741D7B5F26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C55282D-14E5-499E-BF43-6A741D7B5F26}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C55282D-14E5-499E-BF43-6A741D7B5F26}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C55282D-14E5-499E-BF43-6A741D7B5F26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
