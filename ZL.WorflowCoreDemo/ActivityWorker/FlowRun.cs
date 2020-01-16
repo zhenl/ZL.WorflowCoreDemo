@@ -19,10 +19,12 @@ namespace ZL.WorflowCoreDemo.ActivityWorker
 
             var myClass = new MyNameClass { MyName = "张三" };
 
-            host.StartWorkflow("MyActivityWorkflow", 1, myClass);
+            var id1=host.StartWorkflow("MyActivityWorkflow", 1, myClass).Result;
+            var id2 = host.StartWorkflow("MyActivityWorkflow", 1, myClass).Result;
 
+                      
             var activity = host.GetPendingActivity("activity-1", "worker1", TimeSpan.FromMinutes(1)).Result;
-            
+
             if (activity != null)
             {
                 Console.WriteLine("输入名字");
