@@ -34,17 +34,21 @@ namespace ZL.WorkflowCoreDemo.Json
 
             //Console.WriteLine(new Dictionary<string, object>() is IDictionary<string, object>);
             loader.LoadDefinition(json1, Deserializers.Json);
-                    
 
-            var host = serviceProvider.GetService<IWorkflowHost>();
-            host.OnStepError += Host_OnStepError;
-            //host.RegisterWorkflow<HelloWorldWorkflow>();
-            host.Start();
-            var workflowId=host.StartWorkflow("HelloWorld", 1, null).Result;
-            var ins = host.PersistenceStore.GetWorkflowInstance(workflowId).Result;
-            
             var data = new ManualWorkflowData();
             data.MyDic.Add("Name", "zzd");
+            var host = serviceProvider.GetService<IWorkflowHost>();
+            host.OnStepError += Host_OnStepError;
+            host.OnLifeCycleEvent += (evt=> {
+                Console.WriteLine(evt.ToString());
+                Console.WriteLine(data.Name);
+            } );
+            //host.RegisterWorkflow<HelloWorldWorkflow>();
+            host.Start();
+            //var workflowId=host.StartWorkflow("HelloWorld", 1, null).Result;
+            //var ins = host.PersistenceStore.GetWorkflowInstance(workflowId).Result;
+            
+          
             //var str = Newtonsoft.Json.JsonConvert.SerializeObject(data);
 
             //var data1= Newtonsoft.Json.JsonConvert.DeserializeObject<ManualWorkflowData>(str);
@@ -54,8 +58,15 @@ namespace ZL.WorkflowCoreDemo.Json
             data.Name = "gxy";
             var res=host.StartWorkflow("ManualWorkflow", data, null).Result;
             Console.WriteLine(res);
+            //Console.WriteLine(data.Name);
             Console.ReadLine();
             host.Stop();
+        }
+
+        private static void Host_OnLifeCycleEvent(WorkflowCore.Models.LifeCycleEvents.LifeCycleEvent evt)
+        {
+            
+            Console.WriteLine(evt.ToString());
         }
 
         private static void Host_OnStepError(WorkflowCore.Models.WorkflowInstance workflow, WorkflowCore.Models.WorkflowStep step, Exception exception)

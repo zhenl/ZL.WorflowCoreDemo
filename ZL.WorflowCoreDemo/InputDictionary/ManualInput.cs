@@ -25,11 +25,14 @@ namespace ZL.WorflowCoreDemo.InputDictionary
                 {
                     Console.WriteLine(p.Key + ":" + p.Value);
                 }
+                Paras.Add(Paras.Count.ToString(), Paras.Count);
             }
             else
             {
                 Console.WriteLine("No paras");
             }
+
+            Name = "你好" + Name;
             
              return ExecutionResult.Next();
         }
