@@ -1,0 +1,31 @@
+{
+  "Id": "ManualWorkflow",
+  "Version": 1,
+  "DataType": "ZL.WorflowCoreDemo.InputDictionary.ManualWorkflowData,ZL.WorflowCoreDemo",
+  "Steps": [
+    {
+      "Id": "EnterName1",
+      "StepType": "ZL.WorflowCoreDemo.InputDictionary.ManualInput,ZL.WorflowCoreDemo",
+      "NextStepId": "EnterName2",
+      "inputs": {
+        "Paras": "data.MyDic",
+        "Name": "data.Name"
+      },
+      "Outputs": {
+        "Name": "Name"
+      }
+
+    },
+    {
+      "Id": "EnterName2",
+      "StepType": "ZL.WorflowCoreDemo.InputDictionary.ManualInput,ZL.WorflowCoreDemo",
+      "inputs": {
+        "Paras": "data.MyDic",
+        "Name": "data.Name"
+      },
+      "Outputs": {
+        "Name": "Name"
+      }
+    }
+  ]
+}
