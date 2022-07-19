@@ -28,13 +28,13 @@ namespace ZL.WorkflowCoreDemo.Web.Pages
         public void OnGet()
         {
             var data = new ManualWorkflowData();
-            data.MyDic.Add("Name", "zzd");
+            data.MyDic.Add("Name", "张三");
 
             host.OnLifeCycleEvent += (evt => {
                 Name = data.Name;
             });
 
-            data.Name = "gxy";
+            data.Name = "李四";
             var res = host.StartWorkflow("ManualWorkflow", data, null).Result;
 
             Thread.Sleep(1000);
